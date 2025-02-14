@@ -1,0 +1,296 @@
+0. Project Name and Description:
+
+Project Name: mewsings
+
+Project Description:
+> mewsings:  Develop collaborative narratives and connect with others to create and participate in shared, story-driven experiences.
+
+
+1. Core Feature Modules (Application Level):
+
+* User Account Module:
+    * Functionality: User registration, login, logout, user profile management (basic profile information - e.g., username, bio).
+    * MVP Scope: Implement core user account functionalities: registration, login, logout.  Basic user profile view and edit (username, bio). Password management (reset password flow if feasible within MVP timeline - otherwise, password reset via admin intervention for MVP). No social profile features (following, friends, etc.) in MVP.
+
+* Content Creation Module (Narrative Writings):
+    * Functionality: Allow users to create and publish narrative writing content.
+    * MVP Scope: Implement functionality for users to:
+        * Create new narrative writing pieces with title and text content.
+        * Save narrative writings as drafts.
+        * Publish narrative writings to be publicly viewable.
+        * Update and edit their own narrative writings.
+        * Basic text formatting (bold, italics - if feasible within MVP timeline, otherwise plain text for MVP).
+        * Basic metadata for narrative writings (title, author, creation/publication date).
+        * No advanced content types (e.g., images, videos, embedded media) in MVP - focus on text-based narratives.
+        * No content categorization (tags, categories) beyond basic metadata in MVP.
+
+* Content Consumption Module (Narrative Writings):
+    * Functionality: Allow users to browse, discover, and read narrative writing content published on the platform.
+    * MVP Scope: Implement functionality for users to:
+        * Browse a listing of recently published narrative writings (reverse chronological order).
+        * View a specific narrative writing in a readable format.
+        * Basic search functionality to find narrative writings by title or content (keyword search).
+        * "Save to Reading List" or "Favorites" functionality (basic implementation).
+        * No content recommendation algorithms or personalized content feeds in MVP.
+        * No user commenting or rating features on content in MVP.
+
+* Social Interaction Module (Group Chat):
+    * Functionality: Enable real-time text-based group chat functionality for users to interact within groups.
+    * MVP Scope: Integrate the pre-defined Group Chat Module (defined in separate "Group Chat Module Prompt Document") into the Application Level MVP. Ensure seamless integration of:
+        * Group creation and management (by users).
+        * Real-time text messaging within groups.
+        * User presence indicators within groups.
+        * Basic group membership management (joining/leaving groups).
+        * Refer to the separate "Group Chat Module Prompt Document" for detailed specifications of the Group Chat Module itself (which is assumed to be developed in parallel or pre-existing).
+
+* Modules Excluded from MVP:
+    * Advanced User Profile Features (beyond basic profile)
+    * Social Networking Features (following, friending, social feeds)
+    * Advanced Content Types (images, videos, embedded media, etc.)
+    * Content Categorization and Tagging (beyond basic metadata)
+    * Content Recommendation and Personalization
+    * User Commenting and Rating on Content
+    * Advanced Text Formatting in Content Creation
+    * Fine-grained User Roles and Permissions (beyond basic content ownership/access)
+    * Reporting and Analytics Dashboards (beyond basic success metrics tracking)
+    * Monetization Features
+    * Mobile Applications (focus on responsive web application for MVP)
+
+
+2. Technical Considerations (Application Level):
+
+* Backend Technology: NestJS (Node.js framework)
+    * Rationale:  Modern, scalable, efficient for real-time applications, good for API development, TypeScript support, suitable for microservices architecture if needed in the future.
+
+* Frontend Technology: Vue.js
+    * Rationale:  Progressive framework, component-based architecture, performant, relatively easy to learn, good for interactive UIs, good ecosystem and community support.
+
+* Database: PostgreSQL
+    * Rationale:  Robust, reliable, scalable, relational database, good for structured data, supports JSON and full-text search capabilities, open-source, widely used.
+
+* Real-time Communication (for Group Chat): WebSockets
+    * Rationale:  Industry standard for real-time bidirectional communication in web applications, well-suited for chat functionality.  Likely already chosen/required by the separate "Group Chat Module Prompt Document".
+
+* Deployment: Docker and Containerization
+    * Rationale:  Enables consistent and portable deployment across different environments, simplifies deployment and scaling, good for microservices architecture, facilitates CI/CD pipelines.
+
+* API Communication: RESTful APIs (primarily) and WebSockets (for Group Chat)
+    * Rationale: REST is a widely adopted standard for API development, suitable for most data exchange needs. WebSockets are specifically for real-time bidirectional communication required by the Group Chat module.  Using a combination allows for flexibility and efficiency.
+
+* Development Environment:  To be defined in detail in Phase 0 Deliverables (but generally: Node.js, PostgreSQL, Docker, Vue CLI, preferred IDE/code editor).
+
+
+3. Scale and Performance Requirements (Application Level):
+
+* User Load Expectations (MVP Phase): Low usage, initial testing with a limited number of users (e.g., internal team, small beta group).  Target concurrent users during peak MVP testing: [Specify - Suggest: 100-200 concurrent users].  Assume gradual user onboarding during MVP.  High scalability is not a primary concern for MVP, focus is on functional validation with a limited user base.
+
+* Performance Requirements (MVP Phase):
+    * General Responsiveness:  Platform should be reasonably responsive for typical user interactions (page loads, content creation/submission, chat messaging).  Specific numerical latency targets are *not* strictly defined for the MVP, focus is on *qualitative* user-perceived responsiveness being "acceptable" or better for core workflows.
+    * Content Loading: Narrative writings should load and render in a reasonable time (e.g., within [Specify - Suggest: 2-3 seconds] for typical text-based content over a reasonable network connection - qualitative target for MVP).
+    * Chat Message Delivery: Group Chat messages should be delivered in near real-time (sub-second latency for message delivery within a group chat - qualitative target for MVP).
+    * System Uptime: Aim for at least 99% system uptime during expected usage hours for the platform in the MVP phase.
+
+* Scalability Considerations (Beyond MVP):  While high scalability is not an MVP goal, the chosen technology stack (NestJS, Vue.js, PostgreSQL, Docker) should be inherently scalable to accommodate future growth and increased user load in subsequent iterations after MVP.  Microservices architecture approach in backend (NestJS) should be considered for future scalability if needed.
+
+
+4. Success Metrics (Application Level):
+
+* User Adoption Metrics:
+    * Metric 7.1: User Registration Functionality Validation.
+        * Description: Validate the functionality of the user registration process. Demonstrate that users can successfully register accounts, log in, and manage basic account settings.
+        * Target for MVP: Successfully onboard and validate the registration process with [Specify - Suggest: 20-30] test users (e.g., internal team, small alpha/beta group) within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Demonstrate successful account creation, login, and basic profile access for these users. Qualitative feedback from these users on the registration process itself (ease of use, clarity) should be collected and be generally positive.  Focus is on validating registration process functionality.
+
+* Content Creation Metrics:
+    * Metric 7.2: Number of Narrative Writings Published.
+        * Description: Track the total number of narrative writing pieces published by users on the platform during the MVP phase.  This validates core content creation functionality.
+        * Target for MVP: Achieve successful creation and publication of at least [Specify - Suggest: 20-30] narrative writing pieces in total by the initial test users (e.g., internal team, small beta group) within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Focus is on validating the content creation and publishing workflow functionality, not achieving a large content volume in the MVP phase.
+
+    * Metric 7.3: Number of Users Creating Content.
+        * Description: Track the number of unique users who publish at least one narrative writing piece during the MVP phase. This validates user accessibility of content creation tools.
+        * Target for MVP: Demonstrate that at least [Specify - Suggest: 5-10] unique test users (from the initial test group) are able to successfully create and publish at least one narrative writing piece each within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Focus is on validating user accessibility and usability of the content creation tools, not on achieving a large creator base in the MVP phase.
+
+* Content Consumption Metrics:
+    * Metric 7.4: Number of Narrative Writings Viewed.
+        * Description: Track the total number of times narrative writing pieces are viewed by users on the platform during the MVP phase. This validates core content consumption functionality.
+        * Target for MVP: Achieve at least [Specify - Suggest: 50-100] narrative writing views in total by the initial test users (e.g., internal team, small beta group) within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Focus is on validating the core content browsing, listing, and viewing functionalities are working as expected, and that initial content is accessible for consumption by test users, not on achieving a high content consumption volume in the MVP phase.
+
+    * Metric 7.5: Number of Users Saving Content to Reading Lists.
+        * Description: Track the number of users who utilize the "Save to Reading List" / "Favorites" feature during the MVP phase. This validates basic user engagement feature functionality.
+        * Target for MVP: Demonstrate that at least [Specify - Suggest: 3-5] unique test users (from the initial test group) successfully use the "Save to Reading List" feature at least once within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Focus is on validating the basic functionality of the "Save to Reading List" feature and ensuring it is accessible and usable for test users, not on driving high adoption of this feature in the MVP phase.
+
+* Social Interaction (Group Chat) Metrics:
+    * Metric 7.6: Number of Active Groups Created.
+        * Description: Track the number of groups created within the Group Chat Module during the MVP phase. This validates basic group creation and functionality.
+        * Target for MVP: Achieve successful creation of at least [Specify - Suggest: 5-10] functional group chat groups by the initial test users (e.g., internal team, small beta group) within [Specify Timeframe - Suggest: 2 weeks] of MVP launch. Demonstrate basic group chat functionality (message sending/receiving, user presence) within these groups. Focus is on validating the core Group Chat Module functionality, not on achieving a large number of groups or high group activity in the MVP phase.
+
+    * Metric 7.7: Average Daily Active Users in Group Chat.
+        * Description: Track the average number of unique users who actively use the Group Chat Module on a daily basis during the MVP phase. This validates basic daily engagement with chat by testers.
+        * Target for MVP: Demonstrate an average of at least [Specify - Suggest: 3-5] Daily Active Users engaging with the Group Chat Module within the initial test user group (e.g., internal team, small beta group) over [Specify Timeframe - Suggest: a period of 1 week] during the MVP launch. Focus is on demonstrating basic daily engagement with the chat feature by the initial testers, validating user interaction with the chat module over time, not on achieving a high DAU number in the MVP phase.
+
+* Performance and Reliability Metrics:
+    * Metric 7.8: System Uptime Percentage.
+        * Description: Measure the actual uptime percentage of the platform during expected usage hours in the MVP phase. This assesses platform reliability.
+        * Target for MVP: Achieve at least 99% System Uptime during expected usage hours for the platform in the MVP phase.
+
+    * Metric 7.9: User-Perceived Responsiveness (Qualitative Feedback).
+        * Description: Collect qualitative feedback from initial MVP users regarding their perception of the platform's responsiveness and speed during core workflows (content browsing, creation, chat). Assess whether feedback is predominantly positive or neutral regarding platform responsiveness.
+        * Target for MVP: Gather qualitative feedback from at least [Specify - Suggest: 10-15] initial MVP users (e.g., through a brief, targeted survey or short interviews). Assess whether feedback is predominantly positive or neutral regarding platform responsiveness during core workflows. Define 'positive/neutral feedback criteria' - e.g., on a simple scale (e.g., 1-3 or 1-5), aim for an average rating indicating 'acceptable responsiveness' or better. Focus is on gathering initial user perceptions of responsiveness, not on rigorous performance benchmarking in the MVP phase.
+
+* Qualitative User Feedback (General):
+    * Metric 7.10: Overall User Satisfaction (Qualitative Feedback).
+        * Description: Collect general qualitative feedback from initial MVP users regarding their overall satisfaction with the platform, ease of use, perceived value, and any pain points or issues encountered.
+        * Target for MVP: Gather general qualitative feedback on overall user satisfaction from at least [Specify - Suggest: 10-15] initial MVP users (e.g., through a brief, open-ended survey, short interviews, or informal feedback sessions). Assess whether feedback is predominantly positive or neutral regarding overall satisfaction with the platform, ease of use, and perceived value of the core MVP features. Define 'positive/neutral feedback criteria' - e.g., analyze feedback for recurring positive themes and absence of critical negative issues, or use a simple rating scale and aim for an average rating indicating 'satisfactory' or better. Focus is on understanding general user perceptions and identifying any major usability or value issues in the MVP, not on achieving high satisfaction scores in the MVP phase.
+
+
+5. UI/UX Guidelines (Application Level):
+
+* Core UI/UX Principles: The following UI/UX guidelines will be applied across the entire platform to ensure a consistent, user-friendly, and effective user experience for the MVP.
+
+    * Guideline 5.1: Clarity and Simplicity: Prioritize clarity and simplicity in the design of all user interfaces across the platform. Avoid visual clutter, ensure intuitive navigation, and make core functionalities easily discoverable and accessible for all modules (User Account, Content Creation, Content Consumption, Social Interaction).
+
+    * Guideline 5.2: Feedback for User Actions:  Provide clear and timely feedback to users in response to their actions throughout the platform.  Implement visual cues and feedback mechanisms for all user interactions, such as button presses, form submissions, content saving actions, and navigation events. Ensure feedback is appropriate to the action and context, clearly communicating to the user that their actions are being processed and the system is responding.
+
+    * Guideline 5.3: Intuitive Input and Controls: Design all user input fields, forms, interactive controls (buttons, links, etc.), and navigation elements to be intuitive and easy to understand and operate. Utilize clear labels, concise instructions where needed, appropriately sized and formatted input fields, and visually distinct interactive elements that afford clear actions. Prioritize ease of use and minimize potential user confusion across all input and control elements within every module.
+
+    * Guideline 5.4: Readable Information Presentation:  Ensure that all information presented to users within the platform is displayed in a consistently readable and easily understandable format. Apply principles of good typography (font selection, size, line height, color contrast), sufficient whitespace and spacing, logical information hierarchy, and visually distinct styling to differentiate various information elements and enhance scannability and comprehension across all content and UI elements.
+
+    * Guideline 5.5: Status Visibility and System Awareness: Design the user interface to provide clear and timely visual cues and feedback to users regarding the current state of the system and the outcomes of their interactions.  Implement loading indicators for data retrieval processes, saving/processing status displays for content creation and modification actions, clear and informative error messages for error conditions, and, where appropriate, general system status indicators. Ensure users are consistently informed about system behavior to reduce uncertainty and build trust in the platform's reliability.
+
+    * Guideline 5.6: Mobile Responsiveness: The entire platform user interface must be designed to be fully responsive and functional across a range of devices and screen sizes, including desktop computers, laptops, tablet devices, and mobile phones. Ensure a consistently usable and feature-complete experience across all core functionalities of the platform, irrespective of the user's device.
+
+    * Guideline 5.7: Accessibility Considerations: Design the platform user interface with basic accessibility principles integrated from the outset.  Incorporate considerations for users with disabilities, including but not limited to: ensuring sufficient color contrast for text and interactive elements, providing keyboard navigation for all core platform functionalities, utilizing semantic HTML markup to enhance screen reader compatibility, and providing alternative text descriptions for all images and non-textual content elements. Strive to meet basic accessibility guidelines within the MVP, with a goal to progressively enhance accessibility compliance in future iterations.
+
+
+6. Non-Functional Requirements/Constraints (Application Level):
+
+* Security Requirements:
+    * Requirement 6.1: Secure User Authentication and Authorization.
+        * Description: Implement robust user authentication and authorization mechanisms to protect user accounts and control access to platform functionalities and data.  Integrated with the User Account Module.
+        * Details:
+            * Use strong password hashing algorithms (e.g., bcrypt, Argon2).
+            * Implement secure session management and protection against session hijacking.
+            * Enforce authorization checks for resource and functionality access.
+            * Protect against common authentication vulnerabilities (e.g., brute-force, credential stuffing).
+
+    * Requirement 6.2: Data Security and Encryption.
+        * Description: Protect sensitive data in transit and at rest through encryption and secure handling practices.
+        * Details:
+            * Enforce HTTPS for all communication.
+            * Encrypt sensitive data at rest in the database.
+            * Implement secure data storage practices.
+
+    * Requirement 6.3: Input Validation and Output Sanitization.
+        * Description: Implement rigorous input validation and output sanitization to prevent injection attacks (SQL, XSS, etc.).
+        * Details:
+            * Validate all user inputs on the backend server-side.
+            * Sanitize user-generated content before display to prevent XSS.
+            * Implement frontend input validation for immediate feedback.
+
+* Privacy Requirements:
+    * Requirement 6.4: User Data Minimization.
+        * Description: Collect and store only the minimum necessary user data for MVP functionalities.
+        * Details:
+            * Define required data points for MVP features.
+            * Avoid collecting non-essential data.
+            * Regularly review data collection practices for minimization.
+
+    * Requirement 6.5: Data Privacy and Transparency.
+        * Description: Be transparent with users about data handling and provide basic privacy controls.
+        * Details:
+            * Develop a basic Privacy Policy document.
+            * Provide users with clear privacy information within the platform.
+            * Offer basic user data controls (e.g., profile editing) where feasible in MVP.
+
+* Operational Requirements / Reliability and Availability:
+    * Requirement 6.6: System Availability and Uptime.
+        * Description: Design for high availability and reliability, minimizing downtime.
+        * Details:
+            * Aim for 99% System Uptime during expected usage hours for MVP.
+            * Implement basic system monitoring.
+            * Design for basic resilience to failures (within MVP scope).
+            * Establish basic incident response procedures.
+
+    * Requirement 6.7: Performance (Responsiveness and Efficiency).
+        * Description: Platform must provide reasonable performance in responsiveness and efficiency.
+        * Details:
+            * Adhere to "reasonable responsiveness" guideline.
+            * Optimize backend and database for efficiency.
+            * Employ frontend performance optimization techniques.
+            * Conduct basic performance testing during development.
+
+    * Requirement 6.8: Monitoring and Logging.
+        * Description: Implement monitoring and logging for operational status, error tracking, and debugging.
+        * Details:
+            * Implement centralized logging for backend components.
+            * Expose key application metrics for monitoring systems (e.g., Prometheus).
+            * Set up basic monitoring dashboards (e.g., Grafana).
+            * Implement basic alerting for critical errors or outages.
+
+* Usability and Accessibility Requirements:
+    * Requirement 6.9: Accessibility.
+        * Description: Design with consideration for basic accessibility principles, making it usable by individuals with disabilities within MVP scope.
+        * Details:
+            * Adhere to "Accessibility Considerations" UI/UX Guideline.
+            * Focus on color contrast, keyboard navigation, semantic HTML, alt text for images.
+            * Conduct basic accessibility testing.
+
+* Maintainability and Code Quality Requirements:
+    * Requirement 6.10: Code Maintainability and Quality.
+        * Description: Develop codebase with maintainability and code quality in mind for future evolution.
+        * Details:
+            * Adhere to coding best practices and style guides.
+            * Write clean, modular, well-structured code.
+            * Include comments and documentation where needed.
+            * Implement basic unit tests for core functionalities.
+            * Utilize version control (e.g., Git).
+
+
+7. Timeline/Deliverables (Application Level):
+
+* Overall Estimated Timeline: [To be calculated - sum of phase timelines] (This is an initial high-level estimate and may be refined).
+
+* Phase 0: Application Level Preliminary Setup and Planning (Estimated Timeline: 1-2 weeks)
+    * Deliverable 0.1: Finalize and Document Application Level Technology Stack.
+    * Deliverable 0.2: High-Level Application Architecture Design (Document).
+    * Deliverable 0.3: Initial Application Level API Design Outline (REST & WebSockets).
+    * Deliverable 0.4: Basic Application Level UI/UX Style Guide (Initial Draft).
+    * Deliverable 0.5: Application Level Development Environment Setup Guide.
+    * Deliverable 0.6: Initial MVP Project Plan and Task Breakdown (High-Level Phases).
+
+* Phase 1: Foundational Backend and Infrastructure Setup (Estimated Timeline: 2-3 weeks)
+    * Deliverable 1.1: Backend Project Setup (NestJS).
+    * Deliverable 1.2: Database Setup (PostgreSQL).
+    * Deliverable 1.3: Deployment Infrastructure Setup (Docker).
+    * Deliverable 1.4: Basic User Account Module - Backend (Registration, Login).
+
+* Phase 2: Core Content Creation and Consumption - Backend (Estimated Timeline: 3-4 weeks)
+    * Deliverable 2.1: Content Creation Module - Backend (Create, Store, Update Narrative Writings).
+    * Deliverable 2.2: Content Consumption Module - Backend (Retrieve and List Narrative Writings).
+    * Deliverable 2.3: Basic Content Metadata Management - Backend.
+    * Deliverable 2.4: Basic Content Search (Backend - if deemed essential for MVP).
+
+* Phase 3: User Account and Content Modules - Frontend UI (Estimated Timeline: 4-5 weeks)
+    * Deliverable 3.1: User Account Module - Frontend UI (Registration, Login, Logout).
+    * Deliverable 3.2: Content Creation Module - Frontend UI (Narrative Writing Editor).
+    * Deliverable 3.3: Content Consumption Module - Frontend UI (Content Listing and Viewing).
+    * Deliverable 3.4: Basic Frontend Navigation and Layout (Application Shell).
+
+* Phase 4: Social Interaction Module (Group Chat) Integration (Estimated Timeline: 2-3 weeks)
+    * Deliverable 4.1: Group Chat Module - Backend API Integration.
+    * Deliverable 4.2: Group Chat Module - Frontend UI Embedding and Integration.
+    * Deliverable 4.3: Application Level Navigation Integration for Group Chat Access.
+    * Deliverable 4.4: Basic Testing of Integrated Group Chat Module.
+
+* Phase 5: Testing and MVP Readiness (Estimated Timeline: 2-3 weeks)
+    * Deliverable 5.1: Comprehensive Functional Testing.
+    * Deliverable 5.2: Basic Security Testing and Vulnerability Assessment.
+    * Deliverable 5.3: Basic Performance Testing and Optimization.
+    * Deliverable 5.4: Bug Fixing and Issue Resolution.
+    * Deliverable 5.5: MVP Readiness Review and Sign-off.
+
+* Phase 6: MVP Release and Initial User Testing (Estimated Timeline: Ongoing, initial 2-4 weeks active)
+    * Deliverable 6.1: MVP Deployment to Staging/Production Environment.
+    * Deliverable 6.2: Initial MVP Release Announcement and User Onboarding (Limited Group).
+    * Deliverable 6.3: User Feedback Collection Setup (Surveys, Feedback Channels).
+    * Deliverable 6.4: Success Metrics Monitoring and Data Collection Implementation.
+    * Deliverable 6.5: Initial MVP Usage Monitoring and Issue Tracking (Post-Release).

@@ -1,7 +1,7 @@
 {
-  "name": "${PROJECT_NAME}",
-  "version": "1.0.0",
-  "description": "",
+  "name": "mewsings",
+  "version": "0.0.0",
+  "description": "mewsings:  Develop collaborative narratives and connect with others to create and participate in shared, story-driven experiences.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
@@ -10,5 +10,9 @@
   "devDependencies": {
     "typescript": "^5.5.3"
   },
-  "private": true
+  "author": {
+    "name": "iamrichardD",
+    "url": "https://github.com/iamrichardD"
+  },
+  "license": "Apache-2.0"
 }
