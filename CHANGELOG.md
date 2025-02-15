@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - README file with project overview
     - Environment configuration documentation
     - License information (Apache-2.0)
+    - Added .DS_Store to .gitignore
+
+### Changed
+- Renamed README to README.md for proper markdown rendering
+
+### Removed
+- Removed .DS_Store from repository
 
 [Unreleased]: https://github.com/iamrichardD/mewsings/commits/main
 
