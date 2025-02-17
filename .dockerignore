@@ -1,0 +1,57 @@
+# Dependencies
+**/node_modules
+**/dist
+
+# Version control
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Testing
+**/coverage
+**/.nyc_output
+**/test
+**/__tests__
+**/*.spec.*
+**/*.test.*
+
+# Logs
+**/logs
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+README.md
+CHANGELOG.md
+docs/
+*.md
+
+# Development configs
+**/.eslintrc*
+**/.prettierrc*
+**/tsconfig*.json
+**/webpack*.js
+**/babel*.js
+**/jest*.js
+**/vitest*.js

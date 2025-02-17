@@ -7,100 +7,98 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Project restructuring
+    - Monorepo package organization
+    - Shared core domain package
+    - Separate frontend and backend packages
+- Core domain package with initial type definitions
+    - Base domain types
+    - Domain interfaces
+    - Shared type utilities
+- Documentation
+    - README file with project overview
+    - Environment configuration documentation
+    - License information (Apache-2.0)
+    - Added .DS_Store to .gitignore
+- Project scripts
+    - `create-mewsings.sh` for project initialization
+- Docker configurations
+    - Frontend service container setup
+    - Backend service container setup
+    - PostgreSQL database container setup
+    - Redis container for WebSocket management
 - Initial project setup and configuration
     - Project directory structure
     - Basic repository setup
     - Docker container configuration for all services
     - Environment configuration management
     - Project documentation
-- Docker configurations
-    - Frontend service container setup
-    - Backend service container setup
-    - PostgreSQL database container setup
-    - Redis container for WebSocket management
-- Project scripts
-    - `create-mewsings.sh` for project initialization
-- Documentation
-    - README file with project overview
-    - Environment configuration documentation
-    - License information (Apache-2.0)
-    - Added .DS_Store to .gitignore
 
 ### Changed
+- Enhance development setup with Vitest configurations
+- Update build configurations for all packages
+- Move to TypeScript monorepo structure
 - Renamed README to README.md for proper markdown rendering
 
 ### Removed
 - Removed .DS_Store from repository
 
-[Unreleased]: https://github.com/iamrichardD/mewsings/commits/main
-
-### Added
-- Initial project setup
-    - Basic repository structure
-    - README documentation
-    - Development environment configuration
-    - Docker containerization setup
-    - CI/CD pipeline scaffolding
-
 ### Backend
-- NestJS application scaffolding
-- Basic database schema design
-- Initial API endpoint structure
-- User authentication framework
 - WebSocket server setup for real-time chat
+- User authentication framework
+- Initial API endpoint structure
+- Basic database schema design
+- NestJS application scaffolding
 
 ### Frontend
-- Vue.js application scaffolding
-- Basic component architecture
-- Initial routing setup
-- Authentication views
 - Basic UI/UX framework implementation
+- Authentication views
+- Initial routing setup
+- Basic component architecture
+- Vue.js application scaffolding
 
 ## [0.1.0] - YYYY-MM-DD (Initial MVP Release - Date TBD)
 
 ### Added
-- User Account Module
-    - User registration functionality
-    - Login/logout system
-    - Basic profile management
-    - Password reset capabilities
-
+- Social Interaction Module (Group Chat)
+    - Group creation and management
+    - Real-time messaging
+    - User presence indicators
+    - Basic group membership controls
+- Content Consumption Module
+    - Content browsing and discovery
+    - Individual content viewing
+    - Basic search functionality
+    - Reading list / favorites feature
 - Content Creation Module
     - Narrative writing creation and editing
     - Draft saving functionality
     - Basic text formatting
     - Content publishing workflow
     - Content metadata management
-
-- Content Consumption Module
-    - Content browsing and discovery
-    - Individual content viewing
-    - Basic search functionality
-    - Reading list / favorites feature
-
-- Social Interaction Module (Group Chat)
-    - Group creation and management
-    - Real-time messaging
-    - User presence indicators
-    - Basic group membership controls
+- User Account Module
+    - User registration functionality
+    - Login/logout system
+    - Basic profile management
+    - Password reset capabilities
 
 ### Security
-- User authentication and authorization
-- Data encryption implementation
-- Input validation and sanitization
 - Basic security headers and protections
+- Input validation and sanitization
+- Data encryption implementation
+- User authentication and authorization
 
 ### Infrastructure
-- Docker deployment configuration
-- Database migration system
-- Basic monitoring and logging
 - Development environment setup
+- Basic monitoring and logging
+- Database migration system
+- Docker deployment configuration
 
 ### Documentation
-- API documentation
-- Development guidelines
-- Deployment instructions
 - Contributing guidelines
+- Deployment instructions
+- Development guidelines
+- API documentation
 
 ## Types of Changes
 Changes will be categorized into the following types:
@@ -131,6 +129,7 @@ When adding changes:
 3. Reference any relevant issue numbers
 4. Add proper categorization (Added, Changed, etc.)
 5. Keep descriptions clear and comprehensive
+6. Add new changes at the top of their respective sections (reverse chronological order)
 
 [Unreleased]: https://github.com/username/mewsings/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/username/mewsings/releases/tag/v0.1.0
