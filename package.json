@@ -1,32 +1,20 @@
 {
-  "name": "@mewsings/core",
+  "name": "mewsings",
   "version": "0.1.0",
   "private": true,
-  "description": "Core shared functionality for mewsings platform",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "lint": "eslint src --ext .ts",
-    "clean": "rimraf dist"
-  },
-  "dependencies": {
-    "class-validator": "^0.14.0",
-    "date-fns": "^2.30.0"
+    "build:core": "tsc -p packages/core/tsconfig.json",
+    "type-check:core": "tsc -p packages/core/tsconfig.json --noEmit",
+    "type-check:backend": "tsc -p packages/backend/tsconfig.json --noEmit",
+    "type-check:frontend": "tsc -p packages/frontend/tsconfig.json --noEmit",
+    "type-check": "npm run type-check:core && npm run type-check:backend && npm run type-check:frontend"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitest/coverage-v8": "^1.6.1",
-    "eslint": "^8.0.0",
-    "rimraf": "^5.0.0",
-    "typescript": "^5.0.0",
-    "vitest": "^1.2.0"
+    "@vitest/coverage-v8": "^1.3.1",
+    "vitest": "^1.3.1"
   }
 }

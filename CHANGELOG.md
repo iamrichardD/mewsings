@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- TypeScript configuration across all packages
+    - Core package with strict type checking and declaration generation
+    - Backend package with NestJS-specific configuration
+    - Frontend package with Vue.js support
+- Type checking scripts for individual packages and full project
+- Documentation for TypeScript configuration and build process
+- Path aliases configuration (@/*) for all packages
 - Project restructuring
     - Monorepo package organization
     - Shared core domain package
@@ -35,6 +42,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Project documentation
 
 ### Changed
+- Frontend type checking using TypeScript compiler directly
+- Build order to ensure dependencies are built first
+- Module resolution for package interdependencies
+- Switched to ESM module system across all packages
+- Updated build scripts to respect package dependencies
+- Improved type checking performance with specific include/exclude patterns
 - Enhance development setup with Vitest configurations
 - Update build configurations for all packages
 - Move to TypeScript monorepo structure
